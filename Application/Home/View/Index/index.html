@@ -1,0 +1,30 @@
+<extend name="Index:base" />
+
+<block name="title"><title>{$title}</title></block>
+<block name="sidebar">
+    <include file="Index/sidebar" />
+</block>
+<block name="content">
+    <div id="content" class="col-sm-8">
+        <volist name="topics" id="out">
+            <div class="panel panel-primary">
+                <div class="panel-heading">{$out['name']}</div>
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered table-condensed">
+                        <tr>
+                            <th>{:L('xuhao')}</th>
+                            <th>{:L('name')}</th>
+                        </tr>
+                        <volist name="out['added']" id="in" key="i">
+                            <tr>
+                                <td><a href="{$in['url']}" target="_blank">{$i}</a></td>
+                                <td><a href="{$in['url']}" target="_blank"><i class="glyphicon glyphicon-floppy-save"></i>  {$in['name']}</a></td>
+                            </tr>
+                        </volist>
+                    </table>
+                </div>
+            </div>
+        </volist>
+    </div>
+</block>
+
