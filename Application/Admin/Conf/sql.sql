@@ -11,12 +11,24 @@ CREATE TABLE IF NOT EXISTS `think_topic` (
 /**
  * 软件表
 **/
-
+/*
 CREATE TABLE IF NOT EXISTS `think_soft` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `url` varchar(64),
   `cid` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+*/
+CREATE TABLE IF NOT EXISTS `think_soft` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `lang` varchar(64) NOT NULL,
+  `env` varchar(64) NOT NULL,
+  `price` double default .0,
+  `icon` varchar(64),
+  `info` varchar(1000),
+  `cid` int(11) unsigned default 0,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -33,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `think_user` (
 /**
  * 存放csv文件
  */
-
 CREATE TABLE IF NOT EXISTS `think_csv` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `topic` varchar(64) NOT NULL,
@@ -41,15 +52,15 @@ CREATE TABLE IF NOT EXISTS `think_csv` (
   `url` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 /**
- * 存放代理数据
+ *小贴士
  */
-CREATE TABLE IF NOT EXISTS `think_proxy` (
+CREATE TABLE IF NOT EXISTS `think_tips` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `host` varchar(32) NOT NULL,
-  `port` varchar(16) NOT NULL,
-  `used` boolean NOT NULL,
+  `content` varchar(1000) NOT NULL,
   `createTime` timestamp default current_timestamp,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 

@@ -14,21 +14,13 @@ class SoftController extends AdminController
 		$this->display();
 	}
 	*/
+    //改成分页的？最后改
 	public function index(){
-//		$entity=M('','','DB_CONFIG');
-		$entity=M();
-		#$list=$entity->select();
-		$cid=I("cid");
-		$where="t.id=s.cid";
-		if($cid){
-			$where.=" and s.cid=$cid ";
-		}
-		$list=$entity->table('think_topic t,think_soft s')->field("s.id,s.name,s.url,t.name cname")->where($where)->select();
-		#print_r($entity->getLastsql());
-		#dump($list);
-		if($list){
-			$this->assign("softs",$list);
-		}
+        $m=M("Soft");
+        $list=$m->select();
+        if($list){
+            $this->assign("softs",$list);
+        }
 		$this->display();
 	}
     public function input(){
@@ -39,34 +31,62 @@ class SoftController extends AdminController
         if($soft){
             $this->assign("soft",$soft);
         }
-        //分类（下拉）
-        $topicModel=M('Topic');
-        $topics=$topicModel->select();
-        if($topics){
-            $this->assign("topics",$topics);
-        }
         $this->display();
     }
 	//稍后改名为input
 	public function add(){
-//        $entity=M('Soft','think_','DB_CONFIG');
+        //上传
+        $icon=$_FILES['icon'];
+        if(!empty($icon)){
+            //如果包含图标则上传
+            $icon=$this->upload();
+            //设置文件路径
+            $_POST['icon']=$icon;
+        }
         $entity=M('Soft');
         if($entity->create($_POST,1)){
             if($result=$entity->add()){
                 $this->success('新增成功', U('Soft/index'));
+            }else{
+                $this->error('新增失败,'.$entity->getDbError(),U('Soft/index'));
             }
         }
-        $this->error('新增失败,'.$entity->getDbError(),U('Soft/index'));
+//        $this->error('新增失败,'.$entity->getDbError(),U('Soft/index'));
 	}
+    private function upload(){
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize = 3145728 ;// 设置附件上传大小
+        $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath="./Public/";
+        $upload->savePath = '/Uploads/'; // 设置附件上传目录
+        // 上传单个文件
+        $info = $upload->uploadOne($_FILES['icon']);
+        if(!$info) {// 上传错误提示错误信息
+            $this->error($upload->getError());
+        }else{// 上传成功 获取上传文件信息
+            return $info['savepath'].$info['savename'];
+        }
+    }
 	public function delete(){
 		$entity=M('Soft');
 		$id=I("id");
+        $res=$entity->find($id);
+        //删除文件
+        $ok=$this->deleteFile($res['icon']);
+        if($ok){
+            echo $res['icon'].",删除成功";
+        }else{
+            echo $res['icon'].",删除失败";
+        }
 		if($ct=$entity->delete($id)){
 			$this->success('删除成功!'.'删除'.$ct.'条',U('Soft/index'));
 		}else{
 		    $this->error('删除失败'.$entity->getDbError(),U('Soft/index'));
         }
 	}
+    private function deleteFile($file){
+        return @unlink($file);
+    }
     public function update(){
         if (IS_POST){
             $Topic = M('Soft');
