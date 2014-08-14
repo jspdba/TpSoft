@@ -1,0 +1,27 @@
+<extend name="Index:base" />
+<block name="title"><title>{$title}</title></block>
+<block name="content">
+    <div class="container">
+
+        <empty name="tips">
+            <form role="form" action="{:U('Admin/Tips/add')}" method="post">
+                <input type="hidden" id="id" name="id" >
+                <div class="form-group">
+                    <label for="content">提示内容</label>
+                    <input type="text" class="form-control" id="content" name="content" placeholder="提示内容">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        <else />
+            <form role="form" action="{:U('Admin/Tips/update')}" method="post">
+                <input type="hidden" id="id" name="id" value="{$tips['id']}" >
+                <div class="form-group">
+                    <label for="content">提示内容</label>
+                    <input type="text" class="form-control" id="content" name="content" placeholder="提示内容" value="{$tips['content']}">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </empty>
+    </div>
+    </div>
+</block>

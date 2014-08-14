@@ -46,6 +46,14 @@
                         <li><a href="<?php echo U('Admin/Soft/index');?>">删除</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">小贴士管理<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">展示</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/input');?>">增加</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">删除</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="<?php echo U('Admin/Util/index');?>">导入csv文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertTopic');?>">导入topic文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertSoft');?>">导入soft文件</a></li>-->
@@ -73,7 +81,7 @@
     <div id="wrap">
         
     <div class="container">
-        <?php if(empty($soft)): ?><form class="form-horizontal" role="form" action="/tpsoft/index.php/Admin/Soft/add" enctype="multipart/form-data" method="post">
+        <?php if(empty($soft)): ?><form class="form-horizontal" role="form" action="/tpsoft/index.php/Admin/Soft/add" enctype="multipart/form-data"  class="form-horizontal"  method="post" role="form">
                 <div class="form-group">
                     <label for="name">名称</label>
                     <input type="text" class="form-control" name="name" placeholder="软件名称">
@@ -91,8 +99,8 @@
                     <input type="text" class="form-control" name="price" id="price" placeholder="软件价格">
                 </div>
                 <div class="form-group">
-                    <label for="icon">图标</label>
-                    <input type='file' name='icon'>
+                    <label for="icon">选择图片</label>
+                    <input type='file' name='icon' id="icon">
                 </div>
                 <!--<select class="form-control" name="cid">
                     <?php if(is_array($topics)): $k = 0; $__LIST__ = $topics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$it): $mod = ($k % 2 );++$k;?><option value="<?php echo ($it["id"]); ?>"><?php echo ($it["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -101,7 +109,7 @@
                 <button type="reset" class="btn btn-default">Reset</button>
             </form>
         <?php else: ?>
-            <form role="form" action="<?php echo U('Admin/Soft/update');?>" method="post">
+            <form role="form" action="<?php echo U('Admin/Soft/update');?>" enctype="multipart/form-data"  class="form-horizontal"  method="post" role="form">
                 <input type="hidden" name="id" id="id" value="<?php echo ($soft['id']); ?>">
                 <div class="form-group">
                     <label for="name">名称</label>

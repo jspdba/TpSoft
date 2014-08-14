@@ -46,6 +46,14 @@
                         <li><a href="<?php echo U('Admin/Soft/index');?>">删除</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">小贴士管理<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">展示</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/input');?>">增加</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">删除</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="<?php echo U('Admin/Util/index');?>">导入csv文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertTopic');?>">导入topic文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertSoft');?>">导入soft文件</a></li>-->
@@ -77,7 +85,7 @@
             <!-- Default panel contents -->
             <div class="panel-heading">/tpsoft/index.php/Admin/Soft</div>
             <div class="panel-body">
-                <table class="table table-bordered table-condensed">
+                <!--<table class="table table-bordered table-condensed">
                     <tr>
                         <th>序号</th><th>软件名称</th><th>软件语言</th><th>软件环境</th><th>软件价格</th><th>图标路径</th><th colspan="2">操作</th>
                     </tr>
@@ -91,7 +99,22 @@
                             <td><a href="<?php echo U('Admin/Soft/delete?id='.$it['id']);?>"><i class="glyphicon glyphicon-check"></i> 删除</a></td>
                             <td><a href="<?php echo U('Admin/Soft/input?id='.$it['id']);?>"><i class="glyphicon glyphicon-check"></i> 修改</a></td>
                         </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-                </table>
+                </table>-->
+                <div class="row">
+                    <?php if(is_array($softs)): $i = 0; $__LIST__ = $softs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$it): $mod = ($i % 2 );++$i;?><div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <!--<img data-src="/tpsoft/Public/<?php echo ($it["icon"]); ?>" alt="/tpsoft/Public/<?php echo ($it["icon"]); ?>">-->
+                                <img src="/tpsoft/Public/<?php echo ($it["icon"]); ?>" alt="/tpsoft/Public/<?php echo ($it["icon"]); ?>">
+                                <div class="caption">
+                                    <h3><?php echo ($it["name"]); ?></h3>
+                                    <p>语言：<?php echo ($it["lang"]); ?></p>
+                                    <p>环境：<?php echo ($it["env"]); ?></p>
+                                    <p>价格：<?php echo ($it["price"]); ?></p>
+                                    <p><a href="<?php echo U('Admin/Soft/input?id='.$it['id']);?>" class="btn btn-primary" role="button">修改</a> <a href="<?php echo U('Admin/Soft/delete?id='.$it['id']);?>" class="btn btn-default" role="button">删除</a></p>
+                                </div>
+                            </div>
+                        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                </div>
             </div>
         </div>
     </div>

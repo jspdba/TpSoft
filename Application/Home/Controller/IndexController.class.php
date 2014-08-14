@@ -7,14 +7,14 @@ class IndexController extends Controller {
     public function index(){
         $title = "欢迎页面，首页";
         $this -> assign("title",$title);
-        //生成一个二维数组用于页面分类展示
-        $topicModel=M('Topic');
-        $softModel=M('Soft');
-        $topics=$topicModel->select();
-        foreach($topics as $index=>$value){//每个分类显示5条记录
-            $topics[$index]['added']=$softModel->where('cid='.$value['id'])->limit(5)->select();
-        }
-        $this->assign("topics",$topics);
+
+        $entity=M("Soft");
+  		$list=$entity->order("createTime desc")->limit(5)->select();//显示最新5条？是否增加个选择框
+        $this->assign("newest",$list);
+
+        $tips=M("Tips");
+        $tip=$tips->order("createTime desc")->find();
+        $this->assign("tip",$tip);
         $this->display();
     }
     /**

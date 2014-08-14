@@ -58,25 +58,29 @@ class SoftController extends AdminController
         $upload->maxSize = 3145728 ;// 设置附件上传大小
         $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath="./Public/";
-        $upload->savePath = '/Uploads/'; // 设置附件上传目录
+        $upload->savePath = 'Uploads/'; // 设置附件上传目录
         // 上传单个文件
         $info = $upload->uploadOne($_FILES['icon']);
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息
-            return $info['savepath'].$info['savename'];
+            $path=$info['savepath'].$info['savename'];
+            return $path;
         }
     }
 	public function delete(){
 		$entity=M('Soft');
 		$id=I("id");
         $res=$entity->find($id);
+        $path="./Public/".$res['icon'];
         //删除文件
-        $ok=$this->deleteFile($res['icon']);
-        if($ok){
-            echo $res['icon'].",删除成功";
-        }else{
-            echo $res['icon'].",删除失败";
+        $ok=$this->deleteFile($path);
+        if($ok){//查看是否空目录，如果是空目录，也删掉
+            $dir=dirname($path);
+            $emptydir = $this->dir_is_empty($dir);
+            if($emptydir){
+                rmdir($dir);//删除空目录
+            }
         }
 		if($ct=$entity->delete($id)){
 			$this->success('删除成功!'.'删除'.$ct.'条',U('Soft/index'));
@@ -96,6 +100,20 @@ class SoftController extends AdminController
         }else{
             $this->error('非法请求',U('Admin/Soft/index'));
         }
+    }
+
+    /**
+     * 判断目录非空
+     * @param $dir
+     * @return bool
+     */
+    function dir_is_empty($dir){
+        if($handle = opendir("$dir")){
+            while($item = readdir($handle)){
+                if ($item != "." && $item != "..")return false;
+            }
+        }
+        return true;
     }
 }
 ?>

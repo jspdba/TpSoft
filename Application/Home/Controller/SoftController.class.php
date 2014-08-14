@@ -3,8 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 
 header("Content-type: text/html; charset=utf-8");
-class SoftController extends Controller
-{
+class SoftController extends Controller{
 	/*
 	public function index(){
 		$entity=M('Soft','think_','DB_CONFIG');
@@ -17,23 +16,20 @@ class SoftController extends Controller
 	}
 	*/
 	public function index(){
-//		$entity=M('','','DB_CONFIG');
-		$entity=M();
-		#$list=$entity->select();
-		$cid=I("cid");
-		$where="t.id=s.cid";
-		if($cid){
-			$where.=" and s.cid=$cid ";
-		}
-		$list=$entity->table('think_topic t,think_soft s')->field("s.id,s.name,s.url,t.name cname")->where($where)->select();
-		if($list){
-            $topicName=$list[0]['cname'];
-            $this->assign("topicName",$topicName);
-			$this->assign("list",$list);
-		}
+        $model=M("Soft");
+        //分页类实现
+        $count = $model->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        //更改样式,无效
+        #$Page->setConfig('theme',"<li>%FIRST%</li> <li>%UP_PAGE%</li> <li>%LINK_PAGE%</li> <li>%DOWN_PAGE% %END%</li>");
+        $Page->setConfig('theme',"<ul class='pagination'></li><li>%FIRST%</li><li>%UP_PAGE%</li><li>%LINK_PAGE%</li><li>%DOWN_PAGE%</li><li>%END%</li><li><a> %HEADER%  %NOW_PAGE%/%TOTAL_PAGE% 页</a></ul>");
 
-        $this->sidebar();
-		$this->display();
+        $show = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = $model->order('createTime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('softs',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display(); // 输出模板
 	}
 
 	public function insert(){
@@ -68,11 +64,6 @@ class SoftController extends Controller
 		}
 		$this->error('删除失败'.$entity->getDbError(),'index');
 	}
-    private function sidebar(){
-        $model=M('Topic');
-        $list=$model->select();
-        $this->assign("topics",$list);
-    }
     //详细信息页面
     public function info(){
         $id=I('id');
@@ -80,6 +71,25 @@ class SoftController extends Controller
         $info=$soft->where('id='.$id)->find;
         $this->assign("info",info);
         $this->display();
+    }
+    public function search(){
+        $model=M("Soft");
+        //按名称搜索
+        $name=I("name");
+        $where['name']=array('like',"%".$name."$");
+        //分页类实现
+        $count = $model->where($where)->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        //更改样式,无效
+        #$Page->setConfig('theme',"<li>%FIRST%</li> <li>%UP_PAGE%</li> <li>%LINK_PAGE%</li> <li>%DOWN_PAGE% %END%</li>");
+        $Page->setConfig('theme',"<ul class='pagination'></li><li>%FIRST%</li><li>%UP_PAGE%</li><li>%LINK_PAGE%</li><li>%DOWN_PAGE%</li><li>%END%</li><li><a> %HEADER%  %NOW_PAGE%/%TOTAL_PAGE% 页</a></ul>");
+
+        $show = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = $model->order('createTime desc')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('softs',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display(); // 输出模板
     }
 }
 ?>

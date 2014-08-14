@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `think_soft` (
   `icon` varchar(64),
   `info` varchar(1000),
   `cid` int(11) unsigned default 0,
+  `createTime` timestamp default current_timestamp,
+  `modifyTime` timestamp default current_timestamp,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

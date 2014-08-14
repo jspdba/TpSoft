@@ -3,7 +3,7 @@
 <block name="content">
     <div class="container">
         <empty name="soft">
-            <form class="form-horizontal" role="form" action="__URL__/add" enctype="multipart/form-data" method="post">
+            <form class="form-horizontal" role="form" action="__URL__/add" enctype="multipart/form-data"  class="form-horizontal"  method="post" role="form">
                 <div class="form-group">
                     <label for="name">名称</label>
                     <input type="text" class="form-control" name="name" placeholder="软件名称">
@@ -21,8 +21,8 @@
                     <input type="text" class="form-control" name="price" id="price" placeholder="软件价格">
                 </div>
                 <div class="form-group">
-                    <label for="icon">图标</label>
-                    <input type='file' name='icon'>
+                    <label for="icon">选择图片</label>
+                    <input type='file' name='icon' id="icon">
                 </div>
                 <!--<select class="form-control" name="cid">
                     <volist name="topics" id="it" key="k">
@@ -33,7 +33,7 @@
                 <button type="reset" class="btn btn-default">Reset</button>
             </form>
         <else />
-            <form role="form" action="{:U('Admin/Soft/update')}" method="post">
+            <form role="form" action="{:U('Admin/Soft/update')}" enctype="multipart/form-data"  class="form-horizontal"  method="post" role="form">
                 <input type="hidden" name="id" id="id" value="{$soft['id']}">
                 <div class="form-group">
                     <label for="name">名称</label>

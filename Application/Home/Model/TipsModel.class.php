@@ -4,5 +4,5 @@ use Think\Model;
 /**
 * 主题表，用于分类主题
 */
-class SoftModel extends Model{
+class TipsModel extends Model{
 }
