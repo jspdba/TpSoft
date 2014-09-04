@@ -101,7 +101,7 @@ class ExecelController extends AdminController{
                 ->getFont()->setBold(true);//字体加粗
             $objPhpExcel->getActiveSheet()->getStyleByColumnAndRow($k,1)->
 //                getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);//文字居中
-                getAlignment()->setHorizontal(PHPExcel_Style_Alignment.HORIZONTAL_CENTER);//文字居中
+                getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);//文字居中
             $objPhpExcel->getActiveSheet()->setCellValueByColumnAndRow($k,1,$r);
         }
 
@@ -133,7 +133,7 @@ class ExecelController extends AdminController{
         header('Content-Disposition: attachment;filename="'.$title.'_'.urlencode($name).'.xls"');
         header('Cache-Control: max-age=0');
 
-        $objWriter = PHPExcel_IOFactory.createWriter($objPhpExcel, 'Excel5');
-        $objWriter->save('php://output');
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPhpExcel, 'Excel5');
+        $objWriter -> save('php://output');
     }
 }
