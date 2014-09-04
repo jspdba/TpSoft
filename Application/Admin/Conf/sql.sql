@@ -65,4 +65,4 @@ CREATE TABLE IF NOT EXISTS `think_tips` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
+insert into think_user values(null,'admin','admin','jspdba@163.com');
