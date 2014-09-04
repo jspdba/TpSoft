@@ -65,4 +65,7 @@ CREATE TABLE IF NOT EXISTS `think_tips` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-insert into think_user values(null,'admin','admin','jspdba@163.com');
+insert into `think_user` values(null,'admin','admin','jspdba@163.com');
+# 添加字段title到think_user;
+# alter table `think_soft` add `title` varchar(32) not null ;
+# alter table `think_soft` drop `title`

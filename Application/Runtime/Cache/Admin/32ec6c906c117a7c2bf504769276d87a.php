@@ -44,6 +44,14 @@
                         <li><a href="<?php echo U('Admin/Soft/index');?>">删除</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">小贴士管理<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">展示</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/input');?>">增加</a></li>
+                        <li><a href="<?php echo U('Admin/Tips/index');?>">删除</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="<?php echo U('Admin/Util/index');?>">导入csv文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertTopic');?>">导入topic文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertSoft');?>">导入soft文件</a></li>-->
