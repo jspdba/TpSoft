@@ -13,11 +13,11 @@
 
     <!-- Bootstrap core CSS -->
     <!--<link href="../../../../Public/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="/tpsoft/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/TpSoft/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!--<link href="../../../../Public/css/starter-template.css" rel="stylesheet">-->
-    <link href="/tpsoft/Public/css/index/footer.css" rel="stylesheet">
+    <link href="/TpSoft/Public/css/index/footer.css" rel="stylesheet">
 </head>
 <body>
     <!--导航-->
@@ -134,7 +134,7 @@
     <!--<script src="../../../../Public/js/jquery.min.js"></script>-->
     <!--<script src="../../../../Public/js/bootstrap.min.js"></script>-->
 
-    <script src="/tpsoft/Public/js/jquery.min.js"></script>
-    <script src="/tpsoft/Public/js/bootstrap.min.js"></script>
+    <script src="/TpSoft/Public/js/jquery.min.js"></script>
+    <script src="/TpSoft/Public/js/bootstrap.min.js"></script>
 </body>
 </html>

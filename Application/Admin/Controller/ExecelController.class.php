@@ -72,7 +72,7 @@ class ExecelController extends AdminController{
         }
     }
 //    导出execel文件
-    public function exportExecel(){
+    public function down(){
         $list= M('Soft')->select();   //查出数据$name='Excelfile';
       /*  Vendor("Classes.PHPExcel");
         Vendor("Classes.PHPExcel.IOFactory");

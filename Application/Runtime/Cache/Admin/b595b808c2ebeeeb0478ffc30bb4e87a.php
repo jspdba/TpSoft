@@ -13,12 +13,12 @@
 
     <!-- Bootstrap core CSS -->
     <!--<link href="../../../../Public/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="/tpsoft/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/TpSoft/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!--<link href="../../../../Public/css/starter-template.css" rel="stylesheet">-->
-    <link href="/tpsoft/Public/css/index/index.css" rel="stylesheet">
-    <link href="/tpsoft/Public/css/index/footer.css" rel="stylesheet">
+    <link href="/TpSoft/Public/css/index/index.css" rel="stylesheet">
+    <link href="/TpSoft/Public/css/index/footer.css" rel="stylesheet">
 </head>
 
 <body>
@@ -54,6 +54,7 @@
                         <li><a href="<?php echo U('Admin/Tips/index');?>">删除</a></li>
                     </ul>
                 </li>
+                <li><a href="<?php echo U('Admin/Execel/down');?>">下载软件信息</a></li>
                 <!--<li><a href="<?php echo U('Admin/Util/index');?>">导入csv文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertTopic');?>">导入topic文件</a></li>
                 <li><a href="<?php echo U('Admin/Util/getAndInsertSoft');?>">导入soft文件</a></li>-->
@@ -133,7 +134,7 @@
 <!--<script src="../../../../Public/js/jquery.min.js"></script>-->
 <!--<script src="../../../../Public/js/bootstrap.min.js"></script>-->
 
-<script src="/tpsoft/Public/js/jquery.min.js"></script>
-<script src="/tpsoft/Public/js/bootstrap.min.js"></script>
+<script src="/TpSoft/Public/js/jquery.min.js"></script>
+<script src="/TpSoft/Public/js/bootstrap.min.js"></script>
 </body>
 </html>
