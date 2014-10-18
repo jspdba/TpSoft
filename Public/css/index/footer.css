@@ -28,3 +28,15 @@ body {
         padding-right: 20px;
     }
 }
+a.backtop {
+    background: url("../../img/backtotop.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    bottom: 20px;
+    cursor: pointer;
+    display: none;
+    height: 70px;
+    position: fixed;
+    right: 20px;
+    text-indent: -9999px;
+    width: 70px;
+    z-index: 100;
+}

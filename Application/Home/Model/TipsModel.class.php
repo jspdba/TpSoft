@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Model;
+namespace Home\Model;
 use Think\Model;
 /**
 * 主题表，用于分类主题

@@ -1,0 +1,26 @@
+<extend name="Index:base" />
+<block name="title"><title>{$title}</title></block>
+<block name="content">
+    <div class="container">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">分类管理</div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-condensed">
+                        <tr>
+                            <th>序号</th><th>名称</th><th colspan="2">操作</th>
+                        </tr>
+                        <volist name="topics" id="it" key="i">
+                            <tr>
+                                <td>{$i}</td>
+                                <td>{$it.name}</td>
+                                <td><a href="{:U('Xssxyby/Topic/delete?id='.$it['id'])}"><i class="glyphicon glyphicon-check"></i> 删除</a></td>
+                                <td><a href="{:U('Xssxyby/Topic/input?id='.$it['id'])}"><i class="glyphicon glyphicon-check"></i> 修改</a></td>
+                            </tr>
+                        </volist>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

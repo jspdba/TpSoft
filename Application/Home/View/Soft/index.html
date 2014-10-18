@@ -11,14 +11,35 @@
                 </div>
                 <div class="col-md-8 col-lg-9">
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-success"><h3>软件名称:{$it.name}</h3></li>
-                        <li class="list-group-item">软件语言：{$it.lang}</li>
-                        <li class="list-group-item">软件环境：{$it.env}</li>
-                        <li class="list-group-item">软件价格：{$it.price}</li>
+                        <li class="list-group-item list-group-item-success"><h3>{:L('soft_name')}:{$it.name}</h3></li>
+                        <li class="list-group-item">{:L('soft_lang')}:{$it.lang}</li>
+                        <li class="list-group-item">{:L('soft_env')}:{$it.env}</li>
+                        <li class="list-group-item">{:L('soft_price')}:{$it.price}</li>
+                        <li class="list-group-item">{:L('soft_tip')}</li>
                     </ul>
                 </div>
             </div>
         </volist>
+    <!--<ul class="thumbnails">
+    <volist name="softs" id="it" key="i">
+            <li class="thumbnail">
+                <div class="col-md-4 col-lg-3">
+                    <a href="#" class="thumbnail">
+                        <img src="__PUBLIC__/{$it['icon']}">
+                    </a>
+                </div>
+                <div class="col-md-8 col-lg-9">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-success"><h3>{:L('soft_name')}:{$it.name}</h3></li>
+                        <li class="list-group-item">{:L('soft_lang')}:{$it.lang}</li>
+                        <li class="list-group-item">{:L('soft_env')}:{$it.env}</li>
+                        <li class="list-group-item">{:L('soft_price')}:{$it.price}</li>
+                        <li class="list-group-item">{:L('soft_tip')}</li>
+                    </ul>
+                </div>
+            </li>
+        </volist>
+    </ul>-->
     <div class="row">
         <div class="nav navbar-right">{$page}</div>
     </div>

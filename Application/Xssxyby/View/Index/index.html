@@ -1,0 +1,61 @@
+<extend name="Index:base" />
+
+<block name="title"><title>{$title}</title></block>
+<block name="jumbotron">
+    <div class="container-fluid text-center">
+        <h2>日本最大ビジネスソフト専門店</h2>
+        <p class="lead"> 連絡先：jpsoft777@163.com</p>
+    </div>
+</block>
+<!--parent is a container class-->
+<block name="content">
+    <div id="content">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>商品情報</h3>
+                <!--分类-->
+                <volist name="topics" id="it">
+                    <a href="{:U('Xssxyby/Soft/listByTopic','topic='.$it[id])}" class="btn btn-link">{$it.name}</a>
+                </volist>
+
+                <a href="{:U('Xssxyby/Soft/Index')}" class="pull-right">更多</a>
+
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <volist name="softs" id="it">
+                        <div class="col-md-3 col-lg-3">
+                            <div class="thumbnail">
+                                <img src="__PUBLIC__/{$it.icon}" alt="{$it.name}" >
+                                <div class="caption">
+                                    <h3>软件名称:{$it.name}</h3>
+                                    <p>软件环境:{$it.env}</p>
+                                    <p>软件语言:{$it.lang}</p>
+                                    <p>软件价格:{$it.price}</p>
+                                    <p>提示信息</p>
+                                    <p><a href="{:U('/Xssxyby/Soft/Index','id='.$it['id'])}" class="btn btn-primary" role="button">查看</a>
+                                    <a href="{:U('/Xssxyby/Soft/input','id='.$it['id'])}" class="btn btn-primary" role="button">修改</a>
+                                    <a href="{:U('/Xssxyby/Soft/delete','id='.$it['id'])}" class="btn btn-primary" role="button">删除</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+
+                </div>
+                <div class="row">
+                    <div class="nav navbar-right">{$page}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">小提示</div>
+            <div class="panel-body">
+                <p>{$tip['content']}</p>
+            </div>
+        </div>
+
+    </div>
+</block>
+

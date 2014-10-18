@@ -2,16 +2,14 @@
 
 <block name="title"><title>{$title}</title></block>
 <block name="jumbotron">
-    <div class="jumbotron">
-        <h1>秋业原专卖店</h1>
-        <p class="lead">软件专卖</p>
-        <p class="lead">联系信箱    jspdba@163.com</p>
-        <a class="btn btn-large btn-success" href="#">联系我们</a>
+    <div class="container-fluid text-center">
+        <h2>日本最大ビジネスソフト専門店</h2>
+        <p class="lead"> 連絡先：jpsoft777@163.com</p>
     </div>
 </block>
 <!--parent is a container class-->
 <block name="content">
-    <div id="content"><!--最新软件显示4个吧-->
+    <div id="content">
         <!--<ul class="media-list">
             <volist name="newest" id="it">
                 <li class="media">
@@ -30,31 +28,43 @@
         </ul>-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="">最新软件</a>
-                <a href="{:U('Home/Soft/Index')}" class="pull-right">More</a>
+                <h3>商品情報</h3>
+                <!--分类-->
+                <volist name="topics" id="it">
+                    <a href="{:U('Home/Soft/listByTopic','topic='.$it[id])}" class="btn btn-link">{$it.name}</a>
+                </volist>
+
+                <a href="{:U('Home/Soft/Index')}" class="pull-right">{:L('more')}</a>
+
             </div>
-             <div class="panel-body">
-                 <div class="row">
-                     <volist name="newest" id="it">
-                         <div class="col-md-4">
-                             <div class="thumbnail">
-                                 <img src="__PUBLIC__/{$it.icon}" alt="{$it.name}" >
-                                 <div class="caption">
-                                     <h3>{$it.name}</h3>
-                                     <p>环境：{$it.env}</p>
-                                     <p>语言：{$it.lang}</p>
-                                     <p>价格：{$it.price}</p>
-                                     <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-                                 </div>
-                             </div>
-                         </div>
-                     </volist>
-                 </div>
-             </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <volist name="softs" id="it">
+                        <div class="col-md-3 col-lg-3">
+                            <div class="thumbnail">
+                                <a href="{:U('Home/Soft/index','id='.$it['id'])}"><img src="__PUBLIC__/{$it.icon}" alt="{$it.name}" ></a>
+                                <div class="caption">
+                                    <h3>{:L('soft_name')}:{$it.name}</h3>
+                                    <p>{:L('soft_env')}:{$it.env}</p>
+                                    <p>{:L('soft_lang')}:{$it.lang}</p>
+                                    <p>{:L('soft_price')}:{$it.price}</p>
+                                    <p>{:L('soft_tip')}</p>
+                                    <p><a href="{:U('Home/Soft/index','id='.$it['id'])}" class="btn btn-primary" role="button">{:L('look')}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+
+                </div>
+                <div class="row">
+                    <div class="nav navbar-right">{$page}</div>
+                </div>
+            </div>
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">小贴士</div>
+            <div class="panel-heading">{:L('tips')}</div>
             <div class="panel-body">
                 <p>{$tip['content']}</p>
             </div>

@@ -1,0 +1,53 @@
+<extend name="Index:base" />
+<block name="title"><title>{$title}</title></block>
+<block name="content">
+    <div class="container">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <h3>商品情報</h3>
+                <!--分类-->
+                <volist name="topics" id="it">
+                    <a href="{:U('Home/Soft/listByTopic','topic='.$it[id])}" class="btn btn-link {$it['id']==$topicId? 'active':''}">{$it.name}</a>
+                </volist>
+            </div>
+            <div class="panel-body">
+                <!--<table class="table table-bordered table-condensed">
+                    <tr>
+                        <th>序号</th><th>软件名称</th><th>软件语言</th><th>软件环境</th><th>软件价格</th><th>图标路径</th><th colspan="2">操作</th>
+                    </tr>
+                    <volist name="softs" id="it" key="i">
+                        <tr>
+                            <td>{$i}</td>
+                            <td><a href="#" target="_blank">{$it.name}</td>
+                            <td><a href="#" target="_blank">{$it.lang}</td>
+                            <td><a href="#" target="_blank">{$it.env}</td>
+                            <td><a href="#" target="_blank">{$it.price}</td>
+                            <td><a href="#" target="_blank">{$it.icon}</td>
+                            <td><a href="{:U('Xssxyby/Soft/delete?id='.$it['id'])}"><i class="glyphicon glyphicon-check"></i> 删除</a></td>
+                            <td><a href="{:U('Xssxyby/Soft/input?id='.$it['id'])}"><i class="glyphicon glyphicon-check"></i> 修改</a></td>
+                        </tr>
+                    </volist>
+                </table>-->
+                <div class="row">
+                    <volist name="softs" id="it" key="i">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <!--<img data-src="__PUBLIC__/{$it.icon}" alt="__PUBLIC__/{$it.icon}">-->
+                                <img src="__PUBLIC__/{$it.icon}" alt="__PUBLIC__/{$it.icon}">
+                                <div class="caption">
+                                    <h3>{$it.name}</h3>
+                                    <p>语言：{$it.lang}</p>
+                                    <p>环境：{$it.env}</p>
+                                    <p>价格：{$it.price}</p>
+                                    <p><a href="{:U('Xssxyby/Soft/input?id='.$it['id'])}" class="btn btn-primary" role="button">修改</a> <a href="{:U('Xssxyby/Soft/delete?id='.$it['id'])}" class="btn btn-default" role="button">删除</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

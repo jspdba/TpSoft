@@ -1,0 +1,26 @@
+<extend name="Index:base" />
+<block name="title"><title>{$title}</title></block>
+<block name="content">
+
+        <volist name="softs" id="it" key="i">
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <a href="#" class="thumbnail">
+                        <img src="__PUBLIC__/{$it['icon']}">
+                    </a>
+                </div>
+                <div class="col-md-8 col-lg-9">
+                    <h3>软件名称:{$it.name}</h3>
+                    <p>软件语言：{$it.lang}</p>
+                    <p>软件环境：{$it.env}</p>
+                    <p>软件价格：{$it.price}</p>
+                    <p><a href="{:U('Xssxyby/Soft/input?id='.$it['id'])}" class="btn btn-primary" role="button">修改</a> <a href="{:U('Xssxyby/Soft/delete?id='.$it['id'])}" class="btn btn-default" role="button">删除</a></p>
+                </div>
+            </div>
+        </volist>
+    <div class="row">
+        <div class="nav navbar-right">{$page}</div>
+    </div>
+</block>
+
+</div>
