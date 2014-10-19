@@ -63,7 +63,8 @@
                         <li class="list-group-item"><?php echo L('soft_lang');?>:<?php echo ($it["lang"]); ?></li>
                         <li class="list-group-item"><?php echo L('soft_env');?>:<?php echo ($it["env"]); ?></li>
                         <li class="list-group-item"><?php echo L('soft_price');?>:<?php echo ($it["price"]); ?></li>
-                        <li class="list-group-item"><?php echo L('soft_tip');?></li>
+                        <li class="list-group-item"><?php echo L('soft_tip');?>:<?php echo ($it["tip"]); ?></li>
+                        <li class="list-group-item">分類:<?php echo ($it["tname"]); ?></li>
                     </ul>
                 </div>
             </div><?php endforeach; endif; else: echo "" ;endif; ?>

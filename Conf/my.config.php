@@ -11,6 +11,6 @@ return $arrayName = array(
     'DB_CHARSET' => 'utf8', // 数据库的编码 默认为utf8
 
     //显示调试信息
-    'SHOW_PAGE_TRACE'=>true,
+    'SHOW_PAGE_TRACE'=>false,
 );
 ?>

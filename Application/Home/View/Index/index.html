@@ -45,11 +45,11 @@
                             <div class="thumbnail">
                                 <a href="{:U('Home/Soft/index','id='.$it['id'])}"><img src="__PUBLIC__/{$it.icon}" alt="{$it.name}" ></a>
                                 <div class="caption">
-                                    <h3>{:L('soft_name')}:{$it.name}</h3>
+                                    <h3>ソフトウェアの名称:{$it.name}</h3>
                                     <p>{:L('soft_env')}:{$it.env}</p>
                                     <p>{:L('soft_lang')}:{$it.lang}</p>
                                     <p>{:L('soft_price')}:{$it.price}</p>
-                                    <p>{:L('soft_tip')}</p>
+                                    <p>类别：{$it.tname}</p>
                                     <p><a href="{:U('Home/Soft/index','id='.$it['id'])}" class="btn btn-primary" role="button">{:L('look')}</a></p>
                                 </div>
                             </div>

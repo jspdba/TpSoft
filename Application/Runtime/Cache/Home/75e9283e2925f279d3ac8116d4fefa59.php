@@ -58,10 +58,11 @@
                     </a>
                 </div>
                 <div class="col-md-8 col-lg-9">
-                    <h3>软件名称:<?php echo ($it["name"]); ?></h3>
+                    <h3>ソフトウェアの名称:<?php echo ($it["name"]); ?></h3>
                     <p>软件语言：<?php echo ($it["lang"]); ?></p>
                     <p>软件环境：<?php echo ($it["env"]); ?></p>
                     <p>软件价格：<?php echo ($it["price"]); ?></p>
+                    <p>软件类别：<?php echo ($it["tname"]); ?></p>
                 </div>
             </div><?php endforeach; endif; else: echo "" ;endif; ?>
     <div class="row">

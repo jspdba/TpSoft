@@ -93,23 +93,35 @@
     <div class="container">
         
         
+    <div class="container">
 
-        <?php if(is_array($softs)): $i = 0; $__LIST__ = $softs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$it): $mod = ($i % 2 );++$i;?><div class="row">
-                <div class="col-md-4 col-lg-3">
-                    <a href="#" class="thumbnail">
-                        <img src="/TpSoft/Public/<?php echo ($it['icon']); ?>">
-                    </a>
+        <?php if(empty($topic)): ?><form role="form" action="<?php echo U('Xssxyby/Topic/add');?>" method="post">
+                <input type="hidden" id="id" name="id" >
+                <div class="form-group">
+                    <label for="name">分类</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="分类名称">
                 </div>
-                <div class="col-md-8 col-lg-9">
-                    <h3>软件名称:<?php echo ($it["name"]); ?></h3>
-                    <p>软件语言：<?php echo ($it["lang"]); ?></p>
-                    <p>软件环境：<?php echo ($it["env"]); ?></p>
-                    <p>软件价格：<?php echo ($it["price"]); ?></p>
-                    <p><a href="<?php echo U('Xssxyby/Soft/input?id='.$it['id']);?>" class="btn btn-primary" role="button">修改</a> <a href="<?php echo U('Xssxyby/Soft/delete?id='.$it['id']);?>" class="btn btn-default" role="button">删除</a></p>
+                <div class="form-group">
+                    <label for="leval">分类级别</label>
+                    <input type="number" class="form-control" id="leval" name="leval" placeholder="分类级别">
                 </div>
-            </div><?php endforeach; endif; else: echo "" ;endif; ?>
-    <div class="row">
-        <div class="nav navbar-right"><?php echo ($page); ?></div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        <?php else: ?>
+            <form role="form" action="<?php echo U('Xssxyby/Topic/update');?>" method="post">
+                <input type="hidden" id="id" name="id" value="<?php echo ($topic['id']); ?>" >
+                <div class="form-group">
+                    <label for="name">分类</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="分类名称" value="<?php echo ($topic['name']); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="leval">分类级别</label>
+                    <input type="number" class="form-control" id="leval" name="leval" placeholder="分类级别" value="<?php echo ($topic['leval']); ?>">
+                </div>
+                <?php echo ($topic['level']); ?>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form><?php endif; ?>
+    </div>
     </div>
 
     </div><!-- /.container -->

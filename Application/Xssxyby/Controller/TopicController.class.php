@@ -40,9 +40,9 @@ class TopicController extends  XssxybyController {
         }
     }
     public function add(){
-        //		$entity=M('Soft','think_','DB_CONFIG');
         $entity=M('Topic');
-        if($entity->create($_POST,1)){
+//        if($entity->create($_POST,1)){
+        if($entity->create()){
             if($result=$entity->add()){
                 $this->success('新增成功', U('Topic/index'));
             }

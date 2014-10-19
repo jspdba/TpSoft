@@ -6,5 +6,5 @@ use Think\Model;
 */
 class UserModel extends Model{
 	#protected $connection = 'mysql://thinkphp:thinkphp@localhost:3306/thinkphp#utf8';
-	protected $fields = array('id', 'username', 'passwd','email','_pk'=>'id');
+//	protected $fields = array('id', 'username', 'passwd','email','_pk'=>'id');
 }

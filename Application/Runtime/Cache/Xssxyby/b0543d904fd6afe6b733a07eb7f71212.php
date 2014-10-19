@@ -111,7 +111,7 @@
                     <label for="price">价格</label>
                     <input type="text" class="form-control" name="price" id="price" placeholder="软件价格">
                 </div>
-                    <select class="form-control">
+                    <select class="form-control" name="cid">
                         <?php if(is_array($topics)): $i = 0; $__LIST__ = $topics;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$it): $mod = ($i % 2 );++$i; if($it['id'] == $soft['cid']): ?><option value="<?php echo ($it['id']); ?>" selected="selected"><?php echo ($it["name"]); ?></option>
                                 <?php else: ?>
                                 <option value="<?php echo ($it['id']); ?>"><?php echo ($it["name"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>

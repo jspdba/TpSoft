@@ -20,7 +20,7 @@
                     <label for="price">价格</label>
                     <input type="text" class="form-control" name="price" id="price" placeholder="软件价格">
                 </div>
-                    <select class="form-control">
+                    <select class="form-control" name="cid">
                         <volist name="topics" id="it">
                             <if condition="$it['id'] eq $soft['cid']">
                                 <option value="{$it['id']}" selected="selected">{$it.name}</option>

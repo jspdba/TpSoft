@@ -7,7 +7,7 @@ return array(
     'name'=>'ソフトウェア名',
     'lang'=>'言語',
 
-    'soft_name'=>'软件名称',
+    'soft_name'=>'ソフトウェアの名称',
     'soft_lang'=>'言語',
     'soft_env'=>'動作環境',
     'soft_price'=>'値段',
@@ -15,6 +15,6 @@ return array(
     'neweast'=>'最新软件',
     'look'=>'查看',
     'tips'=>'豆知識',
-    'more'=>'更多',
+    'more'=>'もっと',
 );
 ?>

@@ -50,11 +50,11 @@
                     </ul>
                 </li>
 
-                <li class="col-lg-3 clearfix">
+                <li class="col-md-4 col-lg-3 clearfix">
                     <div class="navbar-form">
-                        <form id="search" action="<?php echo U('Home/Soft/search');?>" method="post">
+                        <form id="search" action="<?php echo U('Xssxyby/Soft/search');?>" method="post">
                             <div class="input-group">
-                                <input name="name" class="form-control" type="text" placeholder="商品検索">
+                                <input name="name" class="form-control" type="text" placeholder="软件搜索" style="width: 100px">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="document.getElementById('search').submit();">Go!</button>
                                 </span>

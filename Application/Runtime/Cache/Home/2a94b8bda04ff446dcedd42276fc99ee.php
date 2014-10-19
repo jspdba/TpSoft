@@ -86,11 +86,11 @@
                             <div class="thumbnail">
                                 <a href="<?php echo U('Home/Soft/index','id='.$it['id']);?>"><img src="/TpSoft/Public/<?php echo ($it["icon"]); ?>" alt="<?php echo ($it["name"]); ?>" ></a>
                                 <div class="caption">
-                                    <h3><?php echo L('soft_name');?>:<?php echo ($it["name"]); ?></h3>
+                                    <h3>ソフトウェアの名称:<?php echo ($it["name"]); ?></h3>
                                     <p><?php echo L('soft_env');?>:<?php echo ($it["env"]); ?></p>
                                     <p><?php echo L('soft_lang');?>:<?php echo ($it["lang"]); ?></p>
                                     <p><?php echo L('soft_price');?>:<?php echo ($it["price"]); ?></p>
-                                    <p><?php echo L('soft_tip');?></p>
+                                    <p>类别：<?php echo ($it["tname"]); ?></p>
                                     <p><a href="<?php echo U('Home/Soft/index','id='.$it['id']);?>" class="btn btn-primary" role="button"><?php echo L('look');?></a></p>
                                 </div>
                             </div>

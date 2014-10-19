@@ -84,6 +84,8 @@
                                     <p>语言：<?php echo ($it["lang"]); ?></p>
                                     <p>环境：<?php echo ($it["env"]); ?></p>
                                     <p>价格：<?php echo ($it["price"]); ?></p>
+                                    <p>软件描述：<?php echo ($it["info"]); ?></p>
+                                    <p>类别：<?php echo ($tp["name"]); ?></p>
                                     <p><a href="<?php echo U('Xssxyby/Soft/input?id='.$it['id']);?>" class="btn btn-primary" role="button">修改</a> <a href="<?php echo U('Xssxyby/Soft/delete?id='.$it['id']);?>" class="btn btn-default" role="button">删除</a></p>
                                 </div>
                             </div>
