@@ -27,7 +27,7 @@
                     </ul>
                 </li>
 
-                <li class="col-md-4 col-lg-3 clearfix">
+                <li class="col-sm-2 clearfix">
                     <div class="navbar-form">
                         <form id="search" action="{:U('Xssxyby/Soft/search')}" method="post">
                             <div class="input-group">
@@ -42,26 +42,27 @@
                 <!--<li><a href="{:U('Xssxyby/Util/index')}">导入csv文件</a></li>
                 <li><a href="{:U('Xssxyby/Util/getAndInsertTopic')}">导入topic文件</a></li>
                 <li><a href="{:U('Xssxyby/Util/getAndInsertSoft')}">导入soft文件</a></li>-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><i class="glyphicon glyphicon-user"></i> {$Think.session.username} <i class="caret"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--<li>
+                                <a href="#" tabindex="-1"><i class="glyphicon glyphicon-cog"></i>设置</a>
+                            </li>-->
+                            <!--<li class="divider"></li>-->
+                            <empty name="Think.session.username">
+                                <li><a href="{:U('Xssxyby/Login/checkLogin')}"><i class="glyphicon glyphicon-ok-sign"></i>登录</a></li>
+                                <else />
+                                <li>
+                                    <a href="{:U('Xssxyby/Login/logout')}" tabindex="-1"><i class="glyphicon glyphicon-off"></i>	退出</a>
+                                </li>
+                            </empty>
+                        </ul>
+                    </li>
+                </ul>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><i class="glyphicon glyphicon-user"></i> {$Think.session.username} <i class="caret"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!--<li>
-                            <a href="#" tabindex="-1"><i class="glyphicon glyphicon-cog"></i>设置</a>
-                        </li>-->
-                        <!--<li class="divider"></li>-->
-                        <empty name="Think.session.username">
-                            <li><a href="{:U('Xssxyby/Login/checkLogin')}"><i class="glyphicon glyphicon-ok-sign"></i>登录</a></li>
-                        <else />
-                            <li>
-                                <a href="{:U('Xssxyby/Login/logout')}" tabindex="-1"><i class="glyphicon glyphicon-off"></i>	退出</a>
-                            </li>
-                        </empty>
-                    </ul>
-                </li>
-            </ul>
+
     </div>
 </nav>

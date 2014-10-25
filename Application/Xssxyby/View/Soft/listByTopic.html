@@ -8,7 +8,7 @@
                 <h3>商品情報</h3>
                 <!--分类-->
                 <volist name="topics" id="it">
-                    <a href="{:U('Home/Soft/listByTopic','topic='.$it[id])}" class="btn btn-link {$it['id']==$topicId? 'active':''}">{$it.name}</a>
+                    <a href="{:U('Xssxyby/Soft/listByTopic','topic='.$it[id])}" class="btn btn-link {$it['id']==$topicId? 'active':''}">{$it.name}</a>
                 </volist>
             </div>
             <div class="panel-body">
@@ -45,6 +45,9 @@
                             </div>
                         </div>
                     </volist>
+                </div>
+                <div class="row">
+                    <div class="nav navbar-right">{$page}</div>
                 </div>
             </div>
         </div>

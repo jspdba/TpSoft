@@ -16,19 +16,26 @@ class SoftController extends XssxybyController
 	*/
     //改成分页的？最后改
 	public function index(){
-        $m=M("Soft");
+        $model=M("Soft");
         $id=I('id');
+        $where=array();
         if(!empty($id)){
-            $list=$m->select($id);
-        }else{
-            $list=$m->select();
+            $where['id']=array('eq',$id);
         }
-        if($list){
-            $this->assign("softs",$list);
-        }
-        $this->assign("title",'软件管理');
-		$this->display();
+        //分页类实现
+        $count = $model->where($where)->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        //更改样式,无效
+        #$Page->setConfig('theme',"<li>%FIRST%</li> <li>%UP_PAGE%</li> <li>%LINK_PAGE%</li> <li>%DOWN_PAGE% %END%</li>");
+        $Page->setConfig('theme',"<ul class='pagination'></li><li>%FIRST%</li><li>%UP_PAGE%</li><li>%LINK_PAGE%</li><li>%DOWN_PAGE%</li><li>%END%</li><li><a> %HEADER%  %NOW_PAGE%/%TOTAL_PAGE% 页</a></ul>");
 
+        $show = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = $model->order('createTime desc')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('softs',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign("title",'软件搜索');
+        $this->display(); // 输出模板
 	}
     public function input(){
         //修改前先查询
@@ -60,9 +67,9 @@ class SoftController extends XssxybyController
         $entity=M('Soft');
         if($entity->create($_POST,1)){
             if($result=$entity->add()){
-                $this->success('新增成功', U('Soft/index'));
+                $this->success('新增成功', U('Soft/input'));
             }else{
-                $this->error('新增失败,'.$entity->getDbError(),U('Soft/index'));
+                $this->error('新增失败,'.$entity->getDbError(),U('Soft/input'));
             }
         }
 //        $this->error('新增失败,'.$entity->getDbError(),U('Soft/index'));
@@ -106,14 +113,31 @@ class SoftController extends XssxybyController
         return @unlink($file);
     }
     public function update(){
+
         if (IS_POST){
-            $Topic = M('Soft');
-            $Topic->create();
-            $Topic->save();
-            $this->success('保存完成',U('Xssxyby/Soft/index'));
+            //上传
+            $icon=$_FILES['icon'];
+            if(($icon['error'])==0){
+                //如果包含图标则上传
+                $icon=$this->upload();
+                //设置文件路径
+                $_POST['icon']=$icon;
+            }
+            $entity=M('Soft');
+            if($entity->create($_POST,2)){
+                if($result=$entity->save()){
+                    $this->success('保存完成',U('Xssxyby/Soft/index'));
+                }else{
+                    $this->error('保存失败,'.$entity->getDbError(),U('Xssxyby/Soft/index'));
+                }
+            }
+
         }else{
             $this->error('非法请求',U('Xssxyby/Soft/index'));
         }
+
+
+
     }
 
     /**

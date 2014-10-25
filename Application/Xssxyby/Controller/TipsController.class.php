@@ -55,8 +55,9 @@ class TipsController extends  XssxybyController {
         $entity=M('Tips');
         $id=I("id");
         if($ct=$entity->delete($id)){
-            $this->success('删除成功!'.'删除'.$ct.'条', U('Topic/index'));
+            $this->success('删除成功!'.'删除'.$ct.'条', U('Tips/index'));
+        }else{
+            $this->error('删除失败'.$entity->getDbError(),U('Tips/index'));
         }
-        $this->error('删除失败'.$entity->getDbError(),U('Topic/index'));
     }
 } 
